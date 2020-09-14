@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <h2>Tính thuế</h2>
+    Tiền lương 1 tháng &emsp; &emsp; Bậc lương
+    <br>
+    <input type="text" value="0" id="a"> &emsp;
+    <select id="bac">
+        <option value=1>Bậc 1</option>
+        <option value=2>Bậc 2</option>
+    </select> &emsp;
+    <input type="button" value="Tính toán" onclick="tinhtoan()" id="b">
+
+    <p id="ketqua"></p>
+</form>
+<script>
+
+    function tinhtoan() {
+        let x = parseFloat(document.getElementById("a").value);
+        if (x < 10000000) {
+            bacluong(x);
+        } else if(10000000<=x<50000000){
+            x=x*0.9;
+            bacluong(x);
+        } else{
+            x=x*0.9*0.8;
+            bacluong(x);
+        }
+    }
+    function bacluong(x){
+        let y=parseFloat(document.getElementById("bac").value);
+        switch(y){
+            case 1:
+                document.getElementById("ketqua").innerHTML="Kết quả là "+ (x*6 + x*3*0.9 + x*3*0.8);
+                break;
+            case 2:
+                document.getElementById("ketqua").innerHTML="Kết quả là "+ (x*3+x*3*0.9+x*6*0.8);
+                break;
+        }
+
+    }
+</script>
+</body>
+</html>
